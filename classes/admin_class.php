@@ -41,14 +41,32 @@ class Admin extends Database {
     public function getAllUsers() {
         try {
             $conn = $this->connect();
+            
+            // First, try a simple query to see if we can fetch users at all
             $stmt = $conn->query("SELECT c.*, 
-                                  (SELECT COUNT(*) FROM ratings r WHERE r.rated_id = c.id AND r.rating < 3) as low_rating_count 
+                                  COALESCE((SELECT COUNT(*) FROM ratings r WHERE r.rated_id = c.id AND r.rating < 3), 0) as low_rating_count 
                                   FROM customers c 
-                                  ORDER BY c.created_at DESC");
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                  WHERE c.user_role != 3
+                                  ORDER BY c.id DESC");
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            error_log("getAllUsers Success: Found " . count($users) . " users");
+            return $users;
         } catch (Exception $e) {
             error_log("getAllUsers Error: " . $e->getMessage());
-            return [];
+            error_log("getAllUsers Stack Trace: " . $e->getTraceAsString());
+            
+            // Try a simpler query without ratings
+            try {
+                $conn = $this->connect();
+                $stmt = $conn->query("SELECT * FROM customers WHERE user_role != 3 ORDER BY id DESC");
+                $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                error_log("getAllUsers Fallback Success: Found " . count($users) . " users");
+                return $users;
+            } catch (Exception $e2) {
+                error_log("getAllUsers Fallback Error: " . $e2->getMessage());
+                return [];
+            }
         }
     }
 
