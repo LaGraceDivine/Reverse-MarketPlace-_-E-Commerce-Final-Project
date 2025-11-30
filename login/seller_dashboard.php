@@ -783,6 +783,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'User';
     </div>
   </div>
 
+  <script src="../config/config.js.php"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     let currentOrderId = 0;
