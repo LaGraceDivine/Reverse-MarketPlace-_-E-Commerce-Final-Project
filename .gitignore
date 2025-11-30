@@ -2,14 +2,12 @@
 .env
 
 # User Uploads
-# Ignore all files in uploads directory
-uploads/**/*
-# But keep the directory structure
+# Keep the uploads directory structure and contents
 !uploads/.gitkeep
 !uploads/offers/
-!uploads/offers/.gitkeep
+!uploads/offers/*
 !uploads/requests/
-!uploads/requests/.gitkeep
+!uploads/requests/*
 
 # System Files
 .DS_Store
