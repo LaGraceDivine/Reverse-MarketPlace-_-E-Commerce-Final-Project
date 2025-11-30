@@ -1,0 +1,39 @@
+# Environment Variables
+.env
+
+# User Uploads
+uploads/*
+!uploads/.gitkeep
+
+# System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Database Credentials (if any standalone files)
+settings/db_cred.php
+
+# Backup Files
+*.bak
+*.backup
