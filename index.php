@@ -599,5 +599,7 @@ if (isset($_SESSION['user_id'])) {
     });
   </script>
 
+  <?php include 'includes/footer.php'; ?>
+
 </body>
 </html>

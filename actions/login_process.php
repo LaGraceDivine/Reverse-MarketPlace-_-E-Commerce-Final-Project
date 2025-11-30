@@ -28,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $user['full_name'];
         $_SESSION['user_email'] = $user['email'];
         $_SESSION['user_role'] = $user['user_role'];
+        // Set user_type for dispute system
+        $_SESSION['user_type'] = ((int)$user['user_role'] === 2) ? 'seller' : 'buyer';
         
         // Role-based redirect
         switch((int)$user['user_role']) {

@@ -1140,6 +1140,11 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'User';
     fetchRequests();
     fetchOrders();
   </script>
+  
+  <!-- Dispute Chatbot -->
+  <link rel="stylesheet" href="../css/dispute_chatbot.css">
+  <script src="../js/dispute_chatbot.js"></script>
+  
   <?php include '../includes/footer.php'; ?>
 </body>
 </html>

@@ -2,12 +2,11 @@
 .env
 
 # User Uploads
-# Keep the uploads directory structure and contents
+# Ignore all uploaded files but keep directory structure
+uploads/**/*
 !uploads/.gitkeep
-!uploads/offers/
-!uploads/offers/*
-!uploads/requests/
-!uploads/requests/*
+!uploads/*/
+!uploads/*/.gitkeep
 
 # System Files
 .DS_Store
@@ -41,3 +40,9 @@ settings/db_cred.php
 # Backup Files
 *.bak
 *.backup
+
+# Debug Files
+debug_*.php
+test_*.php
+*_debug.php
+*_test.php

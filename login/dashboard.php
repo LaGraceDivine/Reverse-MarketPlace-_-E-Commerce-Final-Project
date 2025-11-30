@@ -45,6 +45,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 3) {
     <a href="#" class="active" onclick="showSection('dashboard')">Dashboard</a>
     <a href="#" onclick="showSection('users')">Users</a>
     <a href="#" onclick="showSection('categories')">Categories</a>
+    <a href="admin_disputes.php">Disputes</a>
     <a href="../actions/logout.php" style="margin-top: 50px; color: #ef4444;">Logout</a>
 </div>
 
